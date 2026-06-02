@@ -1,12 +1,37 @@
 <script setup>
+import { ref } from 'vue'
 import UploadIcon from '../assets/UploadIcon.vue'
-import CamIcon from '../assets/CamIcon.vue';
+import CamIcon from '../assets/CamIcon.vue'
+import DropdownIcon from '../assets/DropdownIcon.vue'
+
+const selectedModel = ref('Choose a model')
+
+const handleModelSelect = (model) => {
+  selectedModel.value = model
+}
 </script>
 
-<template id="Hero">
-    <div class="flex flex-col items-center justify-center py-15">
+<template>
+    <div class="flex flex-col items-center justify-center py-10">
         <h1 class="text-3xl font-semibold text-black">Cambodian Sign Language Recognition</h1>
         <p class="mt-5 text-gray-500 text-center">Choose an option below to get started</p>
+        <el-dropdown trigger="click" @command="handleModelSelect" class="mt-6">
+            <button type="button"
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white border border-gray-200 text-gray-700hover:bg-gray-50 hover:border-gray-300 transition">
+                {{ selectedModel }}
+                <DropdownIcon />
+            </button>
+
+            <template #dropdown>
+                <el-dropdown-menu>
+                    <el-dropdown-item command="ResNet50">ResNet50</el-dropdown-item>
+                    <el-dropdown-item command="YOLOv8">YOLOv8</el-dropdown-item>
+                    <el-dropdown-item command="MediaPipe + MLP">MediaPipe + MLP</el-dropdown-item>
+                    <el-dropdown-item command="EfficientNetB0">EfficientNetB0</el-dropdown-item>
+                    <el-dropdown-item command="MobileNetV2">MobileNetV2</el-dropdown-item>
+                </el-dropdown-menu>
+            </template>
+        </el-dropdown>
     </div>
     <div class="flex justify-center gap-12">
         <div class="w-80 p-6 border border-gray-200 rounded-xl shadow-sm">
@@ -17,7 +42,8 @@ import CamIcon from '../assets/CamIcon.vue';
             <p class="mt-2 text-sm text-gray-500 text-center">
                 Upload a video file and we'll recognize the sign language
             </p>
-            <button class="mt-4 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 cursor-pointer transition">
+            <button
+                class="mt-4 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 cursor-pointer transition">
                 Upload Video
             </button>
             <p class="mt-2 text-xs text-gray-400 text-center">
@@ -32,7 +58,8 @@ import CamIcon from '../assets/CamIcon.vue';
             <p class="mt-2 text-sm text-gray-500 text-center">
                 Use your webcam for real-time sign language recognition
             </p>
-            <button class="mt-4 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 cursor-pointer transition">
+            <button
+                class="mt-4 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 cursor-pointer transition">
                 Use Webcam
             </button>
             <p class="mt-2 text-xs text-gray-400 text-center">

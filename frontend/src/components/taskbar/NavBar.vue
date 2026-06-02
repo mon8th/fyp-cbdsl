@@ -8,7 +8,7 @@ const showHelp = ref(false)
 </script>
 
 <template>
-    <nav class="w-full bg-white border-b border-gray-200 px-8 py-4 flex items-center justify-between">
+    <nav class="sticky top-0 z-50 w-full bg-white border-b border-gray-200 px-8 py-4 flex items-center justify-between">
         <div class="flex items-center gap-3">
             <div class="w-10 flex items-center justify-center">
                 <SignIcon />
