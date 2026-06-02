@@ -4,7 +4,7 @@ import paragonLogo from '../../assets/Paragon.svg'
 </script>
 
 <template>
-    <footer class="mt-25 border-t border-gray-200 py-4">
+    <footer class="mt-25 border-t border-gray-200 min-h-50 flex items-center justify-center">
         <div class="text-center">
             <p class="text-sm text-gray-500">
                 Developed as part of the Cambodian Sign Language Recognition Project
