@@ -1,13 +1,22 @@
 <script setup>
 import { ref } from 'vue'
-import UploadIcon from '../assets/UploadIcon.vue'
+import Webcam from './Webcam.vue'
 import CamIcon from '../assets/CamIcon.vue'
 import DropdownIcon from '../assets/DropdownIcon.vue'
 
 const selectedModel = ref('Choose a model')
+const showWebcam = ref(false)
 
 const handleModelSelect = (model) => {
-  selectedModel.value = model
+    selectedModel.value = model
+}
+
+const useWebCam = () => {
+    if (selectedModel.value === 'Choose a model') {
+        alert('Please choose a model')
+        return
+    }
+    showWebcam.value = true
 }
 </script>
 
@@ -17,7 +26,7 @@ const handleModelSelect = (model) => {
         <p class="mt-5 text-gray-500 text-center">Choose an option below to get started</p>
         <el-dropdown trigger="click" @command="handleModelSelect" class="mt-6">
             <button type="button"
-                class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white border border-gray-200 text-gray-700hover:bg-gray-50 hover:border-gray-300 transition">
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300 transition">
                 {{ selectedModel }}
                 <DropdownIcon />
             </button>
@@ -33,23 +42,7 @@ const handleModelSelect = (model) => {
             </template>
         </el-dropdown>
     </div>
-    <div class="flex justify-center gap-12">
-        <div class="w-80 p-6 border border-gray-200 rounded-xl shadow-sm">
-            <UploadIcon class="w-16 h-16 mx-auto rounded-full bg-blue-200 p-3" />
-            <h2 class="mt-4 text-lg font-semibold text-center">
-                Upload Video
-            </h2>
-            <p class="mt-2 text-sm text-gray-500 text-center">
-                Upload a video file and we'll recognize the sign language
-            </p>
-            <button
-                class="mt-4 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 cursor-pointer transition">
-                Upload Video
-            </button>
-            <p class="mt-2 text-xs text-gray-400 text-center">
-                Max file size: MB
-            </p>
-        </div>
+    <div v-if="!showWebcam" class="flex justify-center gap-12">
         <div class="w-80 p-6 border border-gray-200 rounded-xl shadow-sm">
             <CamIcon class="w-16 h-16 mx-auto rounded-full bg-blue-200 p-3" />
             <h2 class="mt-4 text-lg font-semibold text-center">
@@ -58,7 +51,7 @@ const handleModelSelect = (model) => {
             <p class="mt-2 text-sm text-gray-500 text-center">
                 Use your webcam for real-time sign language recognition
             </p>
-            <button
+            <button @click="useWebCam"
                 class="mt-4 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 cursor-pointer transition">
                 Use Webcam
             </button>
@@ -66,4 +59,9 @@ const handleModelSelect = (model) => {
             </p>
         </div>
     </div>
+    <Webcam
+        v-if="showWebcam"
+        :model="selectedModel"
+        @close="showWebcam = false"
+    />
 </template>
