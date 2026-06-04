@@ -21,15 +21,7 @@ defineEmits(['close'])
             <div class="mt-10 space-y-6">
                 <div class="p-6 border border-gray-200 rounded-xl shadow-sm">
                     <h2 class="text-lg font-semibold text-black">
-                        1. Upload a Video
-                    </h2>
-                    <p class="mt-2 text-gray-500">
-                        Click the Upload Video button and choose a sign language video from your device.
-                    </p>
-                </div>
-                <div class="p-6 border border-gray-200 rounded-xl shadow-sm">
-                    <h2 class="text-lg font-semibold text-black">
-                        2. Use Webcam
+                        1. Use Webcam
                     </h2>
                     <p class="mt-2 text-gray-500">
                         Click Use Webcam to recognize sign language in real time using your camera.
