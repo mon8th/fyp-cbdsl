@@ -216,3 +216,22 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# ── Dataset folders (generated, not source) ────────────────────
+data/raw/
+data/cropped/
+data/split/
+models/ResNet50/data/split_grouped
+split_dataset/
+cropped/
+raw/
+
+# ── YOLO training outputs ───────────────────────────────────────
+runs/
+*.pt
+*.cache
+
+# ── ResNet50 checkpoints and logs ───────────────────────────────
+checkpoints/
+logs/
+*.pth
