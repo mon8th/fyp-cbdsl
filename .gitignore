@@ -223,8 +223,8 @@ data/cropped/
 data/split/
 models/ResNet50/data/split_grouped
 split_dataset/
-cropped/
-raw/
+cropped_from_annotation/
+balanced_dataset/
 
 # ── YOLO training outputs ───────────────────────────────────────
 runs/
